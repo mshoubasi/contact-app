@@ -12,8 +12,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        //
-        dd('test');
+        return view('person.index')->with('people', Person::all());
     }
 
     /**
@@ -21,7 +20,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('person.create');
     }
 
     /**
@@ -29,7 +28,16 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'email'     => 'nullable|email',
+            'phone'     => 'nullable'
+        ]);
+
+        Person::create($validated);
+
+        return redirect()->route('person.index');
     }
 
     /**
@@ -45,7 +53,8 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        return view('person.edit')->with('person', $person);
+
     }
 
     /**
@@ -53,7 +62,16 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        //
+        $validated = $request->validate([
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'email'     => 'nullable|email',
+            'phone'     => 'nullable'
+        ]);
+
+        $person->update($validated);
+
+        return redirect()->route('person.index');
     }
 
     /**
@@ -61,6 +79,9 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        $person->delete();
+
+        return redirect()->route('person.index');
+
     }
 }
