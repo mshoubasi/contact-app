@@ -19,6 +19,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Business</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                     <td>{{ $person->firstname }} {{ $person->lastname }}</td>
                                     <td>{{ $person->email }}</td>
                                     <td>{{ $person->phone }}</td>
+                                    <td>{{ $person->business?->business_name }}</td>
                                     <td>
                                         <a href="{{ route('person.edit', $person->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
