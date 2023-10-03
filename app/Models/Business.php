@@ -11,6 +11,9 @@ class Business extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = [];
+
+
     /**
      * Get all of the people for the Business
      *

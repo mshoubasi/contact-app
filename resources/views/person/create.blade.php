@@ -12,6 +12,13 @@
                     <h3 class="font-semibold pb-5">Add a new person</h3>
                     <form action="{{ route('person.store') }}" method="POST">
                         @csrf
+                        @if ($errors->any())
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-red-400  ">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                         <div class="grid grid-cols-1 sm:grid-cols-6 gap-x-6 gap-y-6">
                             <span class="sm:col-span-3">
                                 <label class="block" for="firstname">First name</label>
@@ -32,6 +39,16 @@
                                 <label class="block" for="phone">Phone</label>
                                 <input class="block w-full" type="text" name="phone" id="phone"
                                     value="{{ old('phone') }}">
+                            </span>
+                            <span class="sm:col-span-3">
+                                <label class="block" for="business">Business</label>
+                                <select class="block w-full" name="business_id" id="business_id">
+                                    <option value="" selected>( No Business )</option>
+                                    @foreach ($businesses as $business)
+                                        <option value="{{ $business->id }}" @selected($business->id == old('business_id'))>
+                                            {{ $business->business_name }}</option>
+                                    @endforeach
+                                </select>
                             </span>
                         </div>
                         <div class="mt-6 flex items-center justify-end gap-x-6">
