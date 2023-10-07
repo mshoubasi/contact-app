@@ -18,14 +18,28 @@
                             <tr>
                                 <th>Business Namae</th>
                                 <th>Contact Email</th>
+                                <th>Category</th>
+                                <th>Tags</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($businesses as $business)
                                 <tr>
-                                    <td>{{ $business->business_name }}</td>
+                                    <td><a
+                                            href="{{ route('business.show', $business->id) }}">{{ $business->business_name }}</a>
+                                    </td>
                                     <td>{{ $business->contact_email }}</td>
+                                    <td>
+                                        @foreach ($business->categories as $category)
+                                            {{ $category->category_name }}
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($business->tags as $tag)
+                                        <span class="bg-green-600 text-white text-xs px-1 rounded-full">{{$tag->tag_name}}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route('business.edit', $business->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

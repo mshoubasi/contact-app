@@ -20,16 +20,23 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Business</th>
+                                <th>Tags</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($people as $person)
                                 <tr>
-                                    <td>{{ $person->firstname }} {{ $person->lastname }}</td>
+                                    <td><a href="{{ route('person.show', $person->id) }}">{{ $person->firstname }}
+                                            {{ $person->lastname }}</a></td>
                                     <td>{{ $person->email }}</td>
                                     <td>{{ $person->phone }}</td>
                                     <td>{{ $person->business?->business_name }}</td>
+                                    <td>
+                                        @foreach ($person->tags as $tag)
+                                        <span class="bg-green-600 text-white text-xs px-1 rounded-full">{{$tag->tag_name}}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route('person.edit', $person->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

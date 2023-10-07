@@ -24,4 +24,16 @@ class Person extends Model
     {
         return $this->belongsTo(Business::class);
     }
+
+    public function tasks()
+    {
+        return $this->morphMany(Task::class, 'taskable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+
 }
