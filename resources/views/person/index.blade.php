@@ -18,6 +18,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Birthday</th>
                                 <th>Phone</th>
                                 <th>Business</th>
                                 <th>Tags</th>
@@ -30,6 +31,7 @@
                                     <td><a href="{{ route('person.show', $person->id) }}">{{ $person->firstname }}
                                             {{ $person->lastname }}</a></td>
                                     <td>{{ $person->email }}</td>
+                                    <td>{{ $person->birthday }}</td>
                                     <td>{{ $person->phone }}</td>
                                     <td>{{ $person->business?->business_name }}</td>
                                     <td>

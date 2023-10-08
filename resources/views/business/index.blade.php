@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex items-center justify-end">
                         <a class="bg-blue-600 text-white py-2 px-3 rounded-full" href="{{ route('business.create') }}">Add
-                            Business</a>
+                            Business </a>
                     </div>
                     <table class="table-fixed border-separate border-spacing-6">
                         <thead>
