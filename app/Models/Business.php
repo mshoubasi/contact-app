@@ -14,7 +14,7 @@ class Business extends Model
 
     protected $guarded = [];
 
-
+    protected $with = ['tags', 'categories'];
     /**
      * Get all of the people for the Business
      *

@@ -34,7 +34,8 @@
                                     <td>{{ $person->business?->business_name }}</td>
                                     <td>
                                         @foreach ($person->tags as $tag)
-                                        <span class="bg-green-600 text-white text-xs px-1 rounded-full">{{$tag->tag_name}}</span>
+                                            <span
+                                                class="bg-green-600 text-white text-xs px-1 rounded-full">{{ $tag->tag_name }}</span>
                                         @endforeach
                                     </td>
                                     <td>
@@ -51,6 +52,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $people->links() }}
                 </div>
             </div>
         </div>

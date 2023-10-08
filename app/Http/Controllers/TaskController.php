@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('task.index')->with('tasks', Task::all());
+        return view('task.index')->with('tasks', Task::open()->paginate(10));
     }
 
     public function store(TaskRequest $request)

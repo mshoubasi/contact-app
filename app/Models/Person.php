@@ -13,7 +13,7 @@ class Person extends Model
 
     protected $guarded = [];
 
-    protected $with = ['business'];
+    protected $with = ['business', 'tags'];
 
     /**
      * Get the business that owns the Person
